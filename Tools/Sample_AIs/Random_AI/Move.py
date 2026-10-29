@@ -6,6 +6,7 @@ We are following the javadoc docstring format which is:
 @return tag describes what the function returns
 @raise tag describes the errors this function can raise
 """
+import re
 
 class Move:
     """
@@ -34,11 +35,17 @@ class Move:
         """
         This class enables the move object to be made from a str
         @param s: string that describes the class. Eg '(0,0)-(2,2)-(0,4)'
+        @raise ValueError: if s is not in that format
         """
+        s = s.strip()
         if (s == '-1'):
             return cls([])
         else:
-            sequencelist = list(map(lambda x:eval(x),s.split('-')))
+            # Parse the text instead of eval()-ing it: the referee reads this string from a student's AI.
+            position = r'[(\[]\s*(\d+)\s*,\s*(\d+)\s*[)\]]'
+            if not re.fullmatch(position + r'(?:-' + position + r')*', s):
+                raise ValueError("Invalid move string: " + repr(s[:100]))
+            sequencelist = [(int(row), int(col)) for row, col in re.findall(position, s)]
             return cls(sequencelist)
 
     """

@@ -11,14 +11,12 @@ def valid_name(name):
 
 path = os.path.abspath(os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "src"))
 print("Make sure you do not change the file structure.")
-lang = input("Please enter which language you use {cpp/java/py}:")
-if lang not in ["cpp","java","py","python"]:
+lang = input("Please enter which language you use {cpp/py}:")
+if lang not in ["cpp","py","python"]:
     raise Exception("Unsupport language.")
 
 if lang == "cpp":
     path = os.path.join(path, "checkers-cpp")
-elif lang == "java":
-    path = os.path.join(path, "checkers-java")
 else:
     if lang == 'python':
         lang = "py"
