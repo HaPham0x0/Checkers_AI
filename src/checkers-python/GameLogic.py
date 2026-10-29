@@ -16,6 +16,27 @@ class GameLogic:
         self.debug = debug
         self.ai_list = []
 
+    @staticmethod
+    def is_legal_move(board,move,player):
+        """
+        Checks that a move is one of the moves get_all_possible_moves allows for this player
+        @param board: the referee's board
+        @param move: the Move the player returned
+        @param player: 1 or 2
+        @return: True if the move is legal, False otherwise
+        """
+        try:
+            seq = tuple(tuple(position) for position in move)
+        except TypeError:
+            return False
+        if not all(len(position) == 2 and all(type(v) is int for v in position) for position in seq):
+            return False
+        legal = set()
+        for checker_moves in board.get_all_possible_moves(player):
+            for legal_move in checker_moves:
+                legal.add(tuple(tuple(position) for position in legal_move))
+        return seq in legal
+
     def gameloop(self,fh=None):
         player = 1
         winPlayer = 0
@@ -30,6 +51,15 @@ class GameLogic:
                 import traceback
                 print("Player",player,"crashed!",file=fh)
                 traceback.print_exc(file=fh)
+                if player == 1:
+                    winPlayer = 2
+                else:
+                    winPlayer = 1
+                break
+            # Only accept moves the rules allow. This enforces mandatory captures and complete multi-jumps,
+            # and rejects malformed moves (e.g. "-1", off-board squares) before they reach make_move.
+            if not self.is_legal_move(board,move,player):
+                print("Invalid Move!",file=fh)
                 if player == 1:
                     winPlayer = 2
                 else:

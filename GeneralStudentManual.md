@@ -15,30 +15,7 @@ Once you finished, you will be asked to supply an initial password for your acco
 If all goes well, your account will be created within **2 hours**. Be sure to activate it before the submission deadline to test your code.
 
 ## Use SSH to connect Openlab
-### What's SSH?
-SSH, also known as Secure Shell or Secure Socket Shell, is a network protocol that gives users, particularly system administrators, a secure way to access a computer over an unsecured network. It allows you to access the openlab environment remotely from your own device safely and see the command-line interface. 
-### SSH on Mac OS
-Mac OS users can easily use **Terminal** to set up SSH connection.
-![command-line-interface-768x451.jpg](https://i.loli.net/2019/08/01/5d428f6aa34cb85709.jpg)
-
-
- 1. Open "Terminal" (found under Applications -> Utilities).
- 2. Input: `ssh yourUCInetID@openlab.ics.uci.edu`
- 3. You will see a prompt for password. Input **ICS account** password. Note it could be different from your UCI account. Your response is hidden. After you type it press 'enter'.
- 4. Then you will be led to the CLI of openlab.
- 
-
-### SSH on Windows
-Windows system doesn't have a build-in tool for SSH. The most common choice is **PuTTY**, a free tool for SSH.
-[PuTTY Download Link][1]
-
-1. Open PuTTY and click 'Open' after configuration:
-![Screen Shot 2019-08-01 at 12.18.52 AM.png](https://i.loli.net/2019/08/01/5d4293379d9de61423.png)
-
-2. You might see the warning, click 'Yes'
-![Screen Shot 2019-08-01 at 12.19.06 AM.png](https://i.loli.net/2019/08/01/5d429337046cf74358.png)
-
-3. Input your UCInetID, press 'Enter'. And then input your **ICS account** password.
+Section 4 of the project's student manual (`Checkers_Student_Manual.docx`) has step-by-step instructions for connecting to openlab, either with Visual Studio Code (recommended) or with the `ssh` command that is built into Mac, Linux and Windows 10/11. Log in with your **ICS account** password; it could be different from your UCI account password.
 
 ### Access your openlab off-campus
 To access your openlab off-campus, including ACC apartments, you will need VPN. 
@@ -116,7 +93,6 @@ You might need to run your code in diﬀerent modes, which is represented as var
  See program arguments.
 
 
-  [1]: https://www.chiark.greenend.org.uk/~sgtatham/putty/
   [2]: https://www.oit.uci.edu/help/vpn/
   [3]: https://www.openvim.com/
   [4]: https://www.jetbrains.com/clion/download/
